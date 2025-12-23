@@ -47,17 +47,17 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, onSearchClick }) => {
               }`}
             >
               {[
-                "Men's Panjabi",
-                "Women's Panjabi",
-                "Kids' Panjabi",
-                "Ramadan Collection",
-              ].map((link) => (
+                { name: "Men's Panjabi", slug: "mens-panjabi" },
+                { name: "Women's Panjabi", slug: "womens-panjabi" },
+                { name: "Kids' Panjabi", slug: "kids-panjabi" },
+                { name: "Ramadan Collection", slug: "ramadan-collection" },
+              ].map((item) => (
                 <a
-                  key={link}
-                  href="#"
+                  key={item.name}
+                  href={`/categories/${item.slug}`}
                   className="hover:text-amber-400 transition-colors relative group"
                 >
-                  {link}
+                  {item.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-amber-600 group-hover:w-full transition-all" />
                 </a>
               ))}
@@ -114,18 +114,18 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, onSearchClick }) => {
               </button>
               <div className="flex flex-col gap-6">
                 {[
-                  "Men's Panjabi",
-                  "Women's Panjabi",
-                  "Kids' Panjabi",
-                  "Ramadan Collection",
-                ].map((link) => (
+                  { name: "Men's Panjabi", slug: "mens-panjabi" },
+                  { name: "Women's Panjabi", slug: "womens-panjabi" },
+                  { name: "Kids' Panjabi", slug: "kids-panjabi" },
+                  { name: "Ramadan Collection", slug: "ramadan-collection" },
+                ].map((item) => (
                   <a
-                    key={link}
-                    href="#"
+                    key={item.name}
+                    href={`/categories/${item.slug}`}
                     className="text-emerald-950 hover:text-amber-400 transition-colors text-lg font-bold uppercase"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    {link}
+                    {item.name}
                   </a>
                 ))}
               </div>
