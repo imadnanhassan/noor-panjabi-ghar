@@ -1,0 +1,48 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="64"
+  height="64"
+  viewBox="0 0 64 64"
+>
+  <defs>
+    <linearGradient id="noor-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3E4C3" />
+      <stop offset="100%" stop-color="#C9A36A" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="#0F3D3E" />
+
+  <!-- Inner gold ring -->
+  <circle
+    cx="32"
+    cy="32"
+    r="23"
+    fill="none"
+    stroke="url(#noor-gold)"
+    stroke-width="3"
+  />
+
+  <!-- Small crescent hint -->
+  <path
+    d="M40 22
+       A10 10 0 1 1 30 32
+       A8 8 0 1 0 40 22Z"
+    fill="rgba(248,245,240,0.12)"
+  />
+
+  <!-- NP monogram -->
+  <text
+    x="32"
+    y="36"
+    text-anchor="middle"
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    font-size="18"
+    font-weight="700"
+    letter-spacing="2"
+    fill="#F8F5F0"
+  >
+    NP
+  </text>
+</svg>
