@@ -1,54 +1,65 @@
-import React from "react";
+"use client";
 
-export default function HomePage() {
+import React, { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+
+import Navbar from "@/components/ui/home/Navbar";
+import HeroSlider from "@/components/ui/home/HeroSlider";
+import FeaturedCollections from "@/components/ui/home/FeaturedCollections";
+import ShopByAge from "@/components/ui/home/ShopByAge";
+import SeasonalCollections from "@/components/ui/home/SeasonalCollections";
+import BestSellers from "@/components/ui/home/BestSellers";
+import FreshFromAtelier from "@/components/ui/home/FreshFromAtelier";
+import SizeGuideCare from "@/components/ui/home/SizeGuideCare";
+import TestimonialSlider from "@/components/ui/home/TestimonialSlider";
+import GiftIdeas from "@/components/ui/home/GiftIdeas";
+import SafetyQuality from "@/components/ui/home/SafetyQuality";
+import SocialProof from "@/components/ui/home/SocialProof";
+import Newsletter from "@/components/ui/home/Newsletter";
+import Footer from "@/components/ui/home/Footer";
+import SearchOverlay from "@/components/ui/home/SearchOverlay";
+
+const HomePage: React.FC = () => {
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-card py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold text-primary mb-6">
-            Welcome to Noor Panjabi Ghar
-          </h1>
-          <p className="text-xl text-muted mb-8">
-            Discover elegance and modesty in our collection of Islamic clothing
-            and traditional wear.
-          </p>
-          <a
-            href="/products"
-            className="bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary/90 transition"
-          >
-            Shop Now
-          </a>
-        </div>
-      </section>
+    <div className="min-h-screen bg-[#FDFBF7] text-[#1A2E2A] font-sans selection:bg-emerald-100 selection:text-emerald-900 overflow-x-hidden">
+      <AnimatePresence>
+        {isSearchOpen && (
+          <SearchOverlay onClose={() => setIsSearchOpen(false)} />
+        )}
+      </AnimatePresence>
 
-      {/* Featured Products Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Featured Collections
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Placeholder for featured products */}
-            <div className="bg-card p-6 rounded-lg shadow">
-              <h3 className="text-xl font-semibold mb-4">Women's Panjabi</h3>
-              <p className="text-muted">
-                Elegant and modest designs for every occasion.
-              </p>
-            </div>
-            <div className="bg-card p-6 rounded-lg shadow">
-              <h3 className="text-xl font-semibold mb-4">Men's Collection</h3>
-              <p className="text-muted">Traditional and contemporary styles.</p>
-            </div>
-            <div className="bg-card p-6 rounded-lg shadow">
-              <h3 className="text-xl font-semibold mb-4">Accessories</h3>
-              <p className="text-muted">
-                Complete your look with our range of accessories.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Navbar
+        isScrolled={isScrolled}
+        onSearchClick={() => setIsSearchOpen(true)}
+      />
+
+      <main>
+        <HeroSlider />
+        <FeaturedCollections />
+        <ShopByAge />
+        <SeasonalCollections />
+        <BestSellers />
+        <FreshFromAtelier />
+        <SizeGuideCare />
+        <TestimonialSlider />
+        <GiftIdeas />
+        <SafetyQuality />
+        <SocialProof />
+        <Newsletter />
+      </main>
+
+      <Footer />
     </div>
   );
-}
+};
+
+export default HomePage;

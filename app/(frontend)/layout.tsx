@@ -1,4 +1,3 @@
-import { Header } from "@/components/layout/header";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,10 +12,5 @@ export const metadata: Metadata = {
 export default function FrontLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  return (
-    <div>
-      <Header />
-      {children}
-    </div>
-  );
+  return <div>{children}</div>;
 }
