@@ -1,0 +1,19 @@
+import { Header } from "@/components/layout/header";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Noor Panjabi Ghar",
+  description:
+    "Your premier destination for authentic Panjabi dresses and traditional wear. Discover elegance and culture in every piece.",
+};
+
+export default function FrontLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <div>
+      <Header />
+      {children}
+    </div>
+  );
+}
