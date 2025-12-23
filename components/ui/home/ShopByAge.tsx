@@ -55,7 +55,7 @@ const ShopByAge: React.FC = () => {
               className="flex flex-col items-center group cursor-pointer"
             >
               <div
-                className={`relative w-full aspect-[2/3] overflow-hidden rounded-t-full shadow-2xl bg-emerald-100 ${
+                className={`relative w-full aspect-2/3 overflow-hidden rounded-t-full shadow-2xl bg-emerald-100 ${
                   i % 2 !== 0 ? "mt-12" : ""
                 }`}
               >

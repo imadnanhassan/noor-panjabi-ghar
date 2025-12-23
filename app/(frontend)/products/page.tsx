@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Heart, Filter, SlidersHorizontal } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 import Navbar from "@/components/ui/home/Navbar";
 import Footer from "@/components/ui/home/Footer";
@@ -11,6 +12,7 @@ import { SectionTitle } from "@/components/common/section-title";
 
 interface Product {
   name: string;
+  slug: string;
   price: string;
   img: string;
   discount?: string;
@@ -24,6 +26,7 @@ interface Product {
 
 interface ProfessionalProductCardProps {
   name: string;
+  slug: string;
   price: string;
   img: string;
   discount?: string;
@@ -37,61 +40,67 @@ const fadeInUp = {
 
 const ProfessionalProductCard = ({
   name,
+  slug,
   price,
   originalPrice,
   discount,
   img,
-}: ProfessionalProductCardProps) => (
-  <motion.div
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true }}
-    variants={fadeInUp}
-    className="group cursor-pointer"
-  >
-    <div className="relative aspect-3/4 overflow-hidden rounded-[40px] bg-[#FAF7F2] mb-8">
-      <img
-        src={img}
-        className="w-full h-full object-cover grayscale-15% group-hover:grayscale-0 transition-transform duration-[1.5s] group-hover:scale-110"
-      />
+}: ProfessionalProductCardProps) => {
+  const router = useRouter();
 
-      {/* Premium Discount Badge */}
-      {discount && (
-        <div className="absolute top-6 left-6 z-10">
-          <span className="bg-amber-500 text-emerald-950 text-[10px] font-black px-4 py-2 rounded-full shadow-lg border border-white/20">
-            {discount}
-          </span>
-        </div>
-      )}
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={fadeInUp}
+      className="group cursor-pointer"
+      onClick={() => router.push(`/product/${slug}`)}
+    >
+      <div className="relative aspect-3/4 overflow-hidden rounded-[40px] bg-[#FAF7F2] mb-8">
+        <img
+          src={img}
+          className="w-full h-full object-cover grayscale-15% group-hover:grayscale-0 transition-transform duration-[1.5s] group-hover:scale-110"
+        />
 
-      <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-500">
-        <button className="p-4 bg-white/90 backdrop-blur-md rounded-full shadow-xl hover:bg-emerald-950 hover:text-white transition-all">
-          <Heart className="w-4 h-4" />
-        </button>
-      </div>
-      <div className="absolute inset-x-0 bottom-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-700">
-        <button className="w-full bg-emerald-950 text-white py-5 rounded-3xl text-[10px] font-black uppercase tracking-widest shadow-2xl hover:bg-amber-600 transition-all">
-          Add to Bag
-        </button>
-      </div>
-    </div>
-    <div className="text-center px-4">
-      <h4 className="text-xl font-serif font-bold text-emerald-950 mb-2 group-hover:text-amber-600 transition-colors">
-        {name}
-      </h4>
-      <div className="flex items-center justify-center gap-3">
-        {originalPrice && (
-          <span className="text-slate-300 line-through text-sm font-light italic">
-            {originalPrice}
-          </span>
+        {/* Premium Discount Badge */}
+        {discount && (
+          <div className="absolute top-6 left-6 z-10">
+            <span className="bg-amber-500 text-emerald-950 text-[10px] font-black px-4 py-2 rounded-full shadow-lg border border-white/20">
+              {discount}
+            </span>
+          </div>
         )}
-        <p className="text-slate-400 font-bold tracking-widest text-sm italic">
-          {price}
-        </p>
+
+        <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-500">
+          <button className="p-4 bg-white/90 backdrop-blur-md rounded-full shadow-xl hover:bg-emerald-950 hover:text-white transition-all">
+            <Heart className="w-4 h-4" />
+          </button>
+        </div>
+        <div className="absolute inset-x-0 bottom-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-700">
+          <button className="w-full bg-emerald-950 text-white py-5 rounded-3xl text-[10px] font-black uppercase tracking-widest shadow-2xl hover:bg-amber-600 transition-all">
+            Add to Bag
+          </button>
+        </div>
       </div>
-    </div>
-  </motion.div>
-);
+      <div className="text-center px-4">
+        <h4 className="text-xl font-serif font-bold text-emerald-950 mb-2 group-hover:text-amber-600 transition-colors">
+          {name}
+        </h4>
+        <div className="flex items-center justify-center gap-3">
+          {originalPrice && (
+            <span className="text-slate-300 line-through text-sm font-light italic">
+              {originalPrice}
+            </span>
+          )}
+          <p className="text-slate-400 font-bold tracking-widest text-sm italic">
+            {price}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 export default function ProductsPage() {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
@@ -113,6 +122,7 @@ export default function ProductsPage() {
   const allProducts: Product[] = [
     {
       name: "Emerald Silk Panjabi",
+      slug: "emerald-silk-panjabi",
       price: "৳ 4,500",
       img: "https://images.unsplash.com/photo-1621431602131-0775d7330777?auto=format&fit=crop&q=80&w=500",
       discount: "20% OFF",
@@ -125,6 +135,7 @@ export default function ProductsPage() {
     },
     {
       name: "Royal Ivory Kurta",
+      slug: "royal-ivory-kurta",
       price: "৳ 3,200",
       img: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&q=80&w=500",
       category: "kurta",
@@ -135,6 +146,7 @@ export default function ProductsPage() {
     },
     {
       name: "Midnight Lace Abaya",
+      slug: "midnight-lace-abaya",
       price: "৳ 8,900",
       img: "https://images.unsplash.com/photo-1588516903720-8ceb67f9ef84?auto=format&fit=crop&q=80&w=500",
       discount: "15% OFF",
@@ -147,6 +159,7 @@ export default function ProductsPage() {
     },
     {
       name: "Tussar Signature",
+      slug: "tussar-signature",
       price: "৳ 6,800",
       img: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&q=80&w=500",
       category: "sherwani",
@@ -157,6 +170,7 @@ export default function ProductsPage() {
     },
     {
       name: "Golden Thread Sherwani",
+      slug: "golden-thread-sherwani",
       price: "৳ 12,500",
       img: "https://images.unsplash.com/photo-1506629905607-0b5b8b5b1b5b?auto=format&fit=crop&q=80&w=500",
       discount: "10% OFF",
@@ -169,6 +183,7 @@ export default function ProductsPage() {
     },
     {
       name: "Cotton Comfort Pajama",
+      slug: "cotton-comfort-pajama",
       price: "৳ 2,100",
       img: "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&q=80&w=500",
       category: "pajama",
@@ -179,6 +194,7 @@ export default function ProductsPage() {
     },
     {
       name: "Elegant Hijab Set",
+      slug: "elegant-hijab-set",
       price: "৳ 1,800",
       img: "https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&q=80&w=500",
       category: "hijab",
@@ -189,6 +205,7 @@ export default function ProductsPage() {
     },
     {
       name: "Salwar Kameez Ensemble",
+      slug: "salwar-kameez-ensemble",
       price: "৳ 5,400",
       img: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=500",
       discount: "25% OFF",
@@ -201,6 +218,7 @@ export default function ProductsPage() {
     },
     {
       name: "Boys' Mini Panjabi",
+      slug: "boys-mini-panjabi",
       price: "৳ 2,800",
       img: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&q=80&w=500",
       category: "panjabi",
@@ -409,7 +427,7 @@ export default function ProductsPage() {
                           }`}
                         >
                           <div
-                            className="w-4 h-4 rounded-full border border-gray-300 flex-shrink-0"
+                            className="w-4 h-4 rounded-full border border-gray-300 shrink-0"
                             style={{ backgroundColor: color.code }}
                           ></div>
                           {color.name}

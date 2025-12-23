@@ -107,7 +107,7 @@ const Footer = ({ onNavigate }: { onNavigate?: (p: PageType) => void }) => {
                         }
                         className="text-sm font-medium text-white/40 hover:text-amber-500 cursor-pointer transition-colors capitalize flex items-center gap-2 group"
                       >
-                        <span className="w-0 h-[1px] bg-amber-500 group-hover:w-4 transition-all" />
+                        <span className="w-0 h-1px bg-amber-500 group-hover:w-4 transition-all" />
                         {link}
                       </li>
                     ))}
