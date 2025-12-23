@@ -16,8 +16,8 @@ import GiftIdeas from "@/components/ui/home/GiftIdeas";
 import SafetyQuality from "@/components/ui/home/SafetyQuality";
 import SocialProof from "@/components/ui/home/SocialProof";
 import Newsletter from "@/components/ui/home/Newsletter";
-import Footer from "@/components/ui/home/Footer";
 import SearchOverlay from "@/components/ui/home/SearchOverlay";
+import Footer from "@/components/ui/home/Footer";
 
 const HomePage: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
