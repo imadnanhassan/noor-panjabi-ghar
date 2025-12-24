@@ -73,7 +73,7 @@ const HeroSlider: React.FC = () => {
                 initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="text-7xl md:text-9xl font-serif font-bold text-white leading-none mb-10 tracking-tighter"
+                className="text-7xl md:text-6xl font-serif font-bold text-white leading-none mb-10 tracking-tighter"
               >
                 {slides[current].title}
               </motion.h1>
@@ -91,7 +91,7 @@ const HeroSlider: React.FC = () => {
                 transition={{ delay: 0.8 }}
                 className="flex justify-center gap-6"
               >
-                <button className="bg-white text-emerald-950 px-12 py-5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-amber-500 transition-all">
+                <button className="bg-white text-emerald-950 px-12 py-5 cursor-pointer rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-amber-500 transition-all">
                   Explore Boutique
                 </button>
               </motion.div>

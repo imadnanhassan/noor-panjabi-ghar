@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { FormInput } from "@/components/common/form-input";
+import { useLoadingAlert } from "@/hooks/useLoadingAlert";
 
 type LoginFormValues = {
   email: string;

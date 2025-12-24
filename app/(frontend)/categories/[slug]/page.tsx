@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useState, useEffect, use } from "react";
+import { useState, useEffect, use } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Heart } from "lucide-react";
 
 import Navbar from "@/components/ui/home/Navbar";
 import Footer from "@/components/ui/home/Footer";
 import SearchOverlay from "@/components/ui/home/SearchOverlay";
-import { SectionTitle } from "@/components/common/section-title";
 
 interface CategoryPageProps {
   params: Promise<{
@@ -153,56 +152,58 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#1A2E2A] font-sans selection:bg-emerald-100 selection:text-emerald-900 overflow-x-hidden">
-      <AnimatePresence>
-        {isSearchOpen && (
-          <SearchOverlay onClose={() => setIsSearchOpen(false)} />
-        )}
-      </AnimatePresence>
+    <>
+      <div className="min-h-screen bg-[#FDFBF7] text-[#1A2E2A] font-sans selection:bg-emerald-100 selection:text-emerald-900 overflow-x-hidden">
+        <AnimatePresence>
+          {isSearchOpen && (
+            <SearchOverlay onClose={() => setIsSearchOpen(false)} />
+          )}
+        </AnimatePresence>
 
-      <Navbar
-        isScrolled={isScrolled}
-        onSearchClick={() => setIsSearchOpen(true)}
-      />
+        <Navbar
+          isScrolled={isScrolled}
+          onSearchClick={() => setIsSearchOpen(true)}
+        />
 
-      <main>
-        <section className="relative h-[500px] bg-emerald-950 overflow-hidden ">
-          <img
-            src="https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&q=80&w=2070"
-            className="w-full h-full object-cover brightness-[0.45]"
-          />
-          <div className="absolute inset-0 flex items-center justify-center text-center px-10 mt-32 mb-10">
-            <div className="max-w-4xl">
-              <h1 className="text-6xl md:text-8xl font-serif font-bold text-white leading-none tracking-tighter">
-                {formatTitle(resolvedParams.slug)} Collection
-              </h1>
-              <p className="text-white/60 text-lg md:text-xl font-light max-w-2xl mx-auto mt-6 italic">
-                Discover our exquisite{" "}
-                {formatTitle(resolvedParams.slug).toLowerCase()} collection,
-                crafted with traditional elegance and modern comfort.
-              </p>
-            </div>
-          </div>
-        </section>
-        <section className="py-16 bg-white px-6">
-          <div className="container mx-auto">
-            <div className="text-center">
-              <p className="text-lg text-muted-foreground mb-8">
-                Browse our curated selection of{" "}
-                {formatTitle(resolvedParams.slug).toLowerCase()} items,
-                featuring authentic designs and premium quality fabrics.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12">
-                {products.map((product, i) => (
-                  <ProfessionalProductCard key={i} {...product} />
-                ))}
+        <main>
+          <section className="relative h-[500px] bg-emerald-950 overflow-hidden ">
+            <img
+              src="https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&q=80&w=2070"
+              className="w-full h-full object-cover brightness-[0.45]"
+            />
+            <div className="absolute inset-0 flex items-center justify-center text-center px-10 mt-32 mb-10">
+              <div className="max-w-6xl">
+                <h1 className="text-4xl md:text-7xl font-serif font-bold text-white leading-none tracking-tighter">
+                  {formatTitle(resolvedParams.slug)} Collection
+                </h1>
+                <p className="text-white/60 text-lg md:text-xl font-light max-w-2xl mx-auto mt-6 italic">
+                  Discover our exquisite{" "}
+                  {formatTitle(resolvedParams.slug).toLowerCase()} collection,
+                  crafted with traditional elegance and modern comfort.
+                </p>
               </div>
             </div>
-          </div>
-        </section>
-      </main>
+          </section>
+          <section className="py-16 bg-white px-6">
+            <div className="container mx-auto">
+              <div className="text-center">
+                <p className="text-lg text-muted-foreground mb-8">
+                  Browse our curated selection of{" "}
+                  {formatTitle(resolvedParams.slug).toLowerCase()} items,
+                  featuring authentic designs and premium quality fabrics.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12">
+                  {products.map((product, i) => (
+                    <ProfessionalProductCard key={i} {...product} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 }

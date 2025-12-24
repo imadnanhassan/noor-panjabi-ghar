@@ -1,6 +1,10 @@
+"use client";
+
 import React from "react";
+import { useLoadingAlert } from "@/hooks/useLoadingAlert";
 
 export default function OrderTrackingPage() {
+  const { loading, alert, showAlert } = useLoadingAlert();
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold text-center mb-8">Order Tracking</h1>

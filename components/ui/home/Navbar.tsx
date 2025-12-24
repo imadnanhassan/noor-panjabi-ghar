@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { ShoppingBag, User, Search, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 interface NavbarProps {
   isScrolled: boolean;
@@ -23,7 +24,10 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, onSearchClick }) => {
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
           <div className="flex items-center gap-10">
-            <div className="flex items-center gap-3 cursor-pointer group">
+            <Link
+              href="/"
+              className="flex items-center gap-3 cursor-pointer group"
+            >
               <div
                 className={`w-10 h-10 rounded-full flex items-center justify-center font-bold group-hover:rotate-180 transition-transform duration-700 shadow-lg ${
                   isScrolled
@@ -40,7 +44,7 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, onSearchClick }) => {
               >
                 NOOR
               </span>
-            </div>
+            </Link>
             <div
               className={`hidden lg:flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.3em] ${
                 isScrolled ? "text-emerald-950/60" : "text-white/60"
@@ -50,16 +54,16 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, onSearchClick }) => {
                 { name: "Men's Panjabi", slug: "mens-panjabi" },
                 { name: "Women's Panjabi", slug: "womens-panjabi" },
                 { name: "Kids' Panjabi", slug: "kids-panjabi" },
-                { name: "Ramadan Collection", slug: "ramadan-collection" },
+                { name: "Ramadan Collection", slug: "ramadan" },
               ].map((item) => (
-                <a
+                <Link
                   key={item.name}
                   href={`/categories/${item.slug}`}
                   className="hover:text-amber-400 transition-colors relative group"
                 >
                   {item.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-amber-600 group-hover:w-full transition-all" />
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -119,14 +123,14 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, onSearchClick }) => {
                   { name: "Kids' Panjabi", slug: "kids-panjabi" },
                   { name: "Ramadan Collection", slug: "ramadan-collection" },
                 ].map((item) => (
-                  <a
+                  <Link
                     key={item.name}
                     href={`/categories/${item.slug}`}
                     className="text-emerald-950 hover:text-amber-400 transition-colors text-lg font-bold uppercase"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

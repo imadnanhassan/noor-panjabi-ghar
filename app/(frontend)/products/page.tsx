@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Heart, Filter, SlidersHorizontal } from "lucide-react";
+import { Heart, SlidersHorizontal } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 import Navbar from "@/components/ui/home/Navbar";
 import Footer from "@/components/ui/home/Footer";
 import SearchOverlay from "@/components/ui/home/SearchOverlay";
-import { SectionTitle } from "@/components/common/section-title";
 
 interface Product {
   name: string;

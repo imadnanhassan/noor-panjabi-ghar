@@ -18,8 +18,10 @@ import SocialProof from "@/components/ui/home/SocialProof";
 import Newsletter from "@/components/ui/home/Newsletter";
 import SearchOverlay from "@/components/ui/home/SearchOverlay";
 import Footer from "@/components/ui/home/Footer";
+import { useLoadingAlert } from "@/hooks/useLoadingAlert";
 
 const HomePage: React.FC = () => {
+  const { loadingComponent, alertComponent } = useLoadingAlert();
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
 
@@ -30,35 +32,39 @@ const HomePage: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#1A2E2A] font-sans selection:bg-emerald-100 selection:text-emerald-900 overflow-x-hidden">
-      <AnimatePresence>
-        {isSearchOpen && (
-          <SearchOverlay onClose={() => setIsSearchOpen(false)} />
-        )}
-      </AnimatePresence>
+    <>
+      {loadingComponent}
+      {alertComponent}
+      <div className="min-h-screen bg-[#FDFBF7] text-[#1A2E2A] font-sans selection:bg-emerald-100 selection:text-emerald-900 overflow-x-hidden">
+        <AnimatePresence>
+          {isSearchOpen && (
+            <SearchOverlay onClose={() => setIsSearchOpen(false)} />
+          )}
+        </AnimatePresence>
 
-      <Navbar
-        isScrolled={isScrolled}
-        onSearchClick={() => setIsSearchOpen(true)}
-      />
+        <Navbar
+          isScrolled={isScrolled}
+          onSearchClick={() => setIsSearchOpen(true)}
+        />
 
-      <main>
-        <HeroSlider />
-        <FeaturedCollections />
-        <ShopByAge />
-        <SeasonalCollections />
-        <BestSellers />
-        <FreshFromAtelier />
-        <SizeGuideCare />
-        <TestimonialSlider />
-        <GiftIdeas />
-        <SafetyQuality />
-        <SocialProof />
-        <Newsletter />
-      </main>
+        <main>
+          <HeroSlider />
+          <FeaturedCollections />
+          <ShopByAge />
+          <SeasonalCollections />
+          <BestSellers />
+          <FreshFromAtelier />
+          <SizeGuideCare />
+          <TestimonialSlider />
+          <GiftIdeas />
+          <SafetyQuality />
+          <SocialProof />
+          <Newsletter />
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

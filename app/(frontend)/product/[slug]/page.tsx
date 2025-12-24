@@ -7,6 +7,7 @@ import { SectionTitle } from "../../../../components/common/section-title";
 import Navbar from "../../../../components/ui/home/Navbar";
 import Footer from "../../../../components/ui/home/Footer";
 import SearchOverlay from "../../../../components/ui/home/SearchOverlay";
+import { useLoadingAlert } from "@/hooks/useLoadingAlert";
 
 interface ProductDetailPageProps {
   params: {
@@ -49,6 +50,7 @@ const fadeInUp = {
 };
 
 export default function ProductDetailPage({ params }: ProductDetailPageProps) {
+  const { loading, alert, showAlert } = useLoadingAlert();
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const product = getProductBySlug(params.slug);

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 
@@ -145,109 +145,111 @@ export default function CategoriesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#1A2E2A] font-sans selection:bg-emerald-100 selection:text-emerald-900 overflow-x-hidden">
-      <AnimatePresence>
-        {isSearchOpen && (
-          <SearchOverlay onClose={() => setIsSearchOpen(false)} />
-        )}
-      </AnimatePresence>
+    <>
+      <div className="min-h-screen bg-[#FDFBF7] text-[#1A2E2A] font-sans selection:bg-emerald-100 selection:text-emerald-900 overflow-x-hidden">
+        <AnimatePresence>
+          {isSearchOpen && (
+            <SearchOverlay onClose={() => setIsSearchOpen(false)} />
+          )}
+        </AnimatePresence>
 
-      <Navbar
-        isScrolled={isScrolled}
-        onSearchClick={() => setIsSearchOpen(true)}
-      />
+        <Navbar
+          isScrolled={isScrolled}
+          onSearchClick={() => setIsSearchOpen(true)}
+        />
 
-      <main>
-        {/* Hero Section */}
-        <section className="relative h-96 bg-emerald-950 overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=2070"
-            className="w-full h-full object-cover brightness-[0.45]"
-          />
-          <div className="absolute inset-0 flex items-center justify-center text-center px-10 mt-32 mb-32">
-            <div className="max-w-4xl">
-              <h1 className="text-6xl md:text-8xl font-serif font-bold text-white leading-none tracking-tighter">
-                Our Collections
-              </h1>
-              <p className="text-white/60 text-lg md:text-xl font-light max-w-2xl mx-auto mt-6 italic">
-                Discover our curated categories, each crafted with traditional
-                elegance and modern comfort.
-              </p>
+        <main>
+          {/* Hero Section */}
+          <section className="relative h-96 bg-emerald-950 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=2070"
+              className="w-full h-full object-cover brightness-[0.45]"
+            />
+            <div className="absolute inset-0 flex items-center justify-center text-center px-10 mt-32 mb-32">
+              <div className="max-w-4xl">
+                <h1 className="text-6xl md:text-8xl font-serif font-bold text-white leading-none tracking-tighter">
+                  Our Collections
+                </h1>
+                <p className="text-white/60 text-lg md:text-xl font-light max-w-2xl mx-auto mt-6 italic">
+                  Discover our curated categories, each crafted with traditional
+                  elegance and modern comfort.
+                </p>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Men's Categories */}
-        <section className="py-32 bg-white px-6">
-          <div className="container mx-auto">
-            <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-6">
-              <SectionTitle
-                eyebrow="For Him"
-                title="Men's Collections"
-                align="left"
-              />
-              <Link href="/products">
-                <button className="text-[10px] font-black uppercase tracking-widest border-b-2 border-emerald-950/10 hover:border-amber-600 pb-1 transition-all">
-                  View All Men's
-                </button>
-              </Link>
+          {/* Men's Categories */}
+          <section className="py-32 bg-white px-6">
+            <div className="container mx-auto">
+              <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-6">
+                <SectionTitle
+                  eyebrow="For Him"
+                  title="Men's Collections"
+                  align="left"
+                />
+                <Link href="/products">
+                  <button className="text-[10px] font-black uppercase tracking-widest border-b-2 border-emerald-950/10 hover:border-amber-600 pb-1 transition-all">
+                    View All Men's
+                  </button>
+                </Link>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+                {mensCategories.map((category, i) => (
+                  <CategoryCard key={i} {...category} />
+                ))}
+              </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-              {mensCategories.map((category, i) => (
-                <CategoryCard key={i} {...category} />
-              ))}
-            </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Women's Categories */}
-        <section className="py-32 bg-[#FAF7F2] px-6">
-          <div className="container mx-auto">
-            <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-6">
-              <SectionTitle
-                eyebrow="For Her"
-                title="Women's Collections"
-                align="left"
-              />
-              <Link href="/products">
-                <button className="text-[10px] font-black uppercase tracking-widest border-b-2 border-emerald-950/10 hover:border-amber-600 pb-1 transition-all">
-                  View All Women's
-                </button>
-              </Link>
+          {/* Women's Categories */}
+          <section className="py-32 bg-[#FAF7F2] px-6">
+            <div className="container mx-auto">
+              <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-6">
+                <SectionTitle
+                  eyebrow="For Her"
+                  title="Women's Collections"
+                  align="left"
+                />
+                <Link href="/products">
+                  <button className="text-[10px] font-black uppercase tracking-widest border-b-2 border-emerald-950/10 hover:border-amber-600 pb-1 transition-all">
+                    View All Women's
+                  </button>
+                </Link>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12">
+                {womensCategories.map((category, i) => (
+                  <CategoryCard key={i} {...category} />
+                ))}
+              </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12">
-              {womensCategories.map((category, i) => (
-                <CategoryCard key={i} {...category} />
-              ))}
-            </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Kids' Categories */}
-        <section className="py-32 bg-white px-6">
-          <div className="container mx-auto">
-            <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-6">
-              <SectionTitle
-                eyebrow="For Little Ones"
-                title="Children's Collections"
-                align="left"
-              />
-              <Link href="/products">
-                <button className="text-[10px] font-black uppercase tracking-widest border-b-2 border-emerald-950/10 hover:border-amber-600 pb-1 transition-all">
-                  View All Kids'
-                </button>
-              </Link>
+          {/* Kids' Categories */}
+          <section className="py-32 bg-white px-6">
+            <div className="container mx-auto">
+              <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-6">
+                <SectionTitle
+                  eyebrow="For Little Ones"
+                  title="Children's Collections"
+                  align="left"
+                />
+                <Link href="/products">
+                  <button className="text-[10px] font-black uppercase tracking-widest border-b-2 border-emerald-950/10 hover:border-amber-600 pb-1 transition-all">
+                    View All Kids'
+                  </button>
+                </Link>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+                {kidsCategories.map((category, i) => (
+                  <CategoryCard key={i} {...category} />
+                ))}
+              </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-              {kidsCategories.map((category, i) => (
-                <CategoryCard key={i} {...category} />
-              ))}
-            </div>
-          </div>
-        </section>
-      </main>
+          </section>
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 }

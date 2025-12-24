@@ -71,16 +71,31 @@ const Footer = ({ onNavigate }: { onNavigate?: (p: PageType) => void }) => {
             </p>
             <div className="flex gap-6">
               {[
-                { icon: Instagram, href: "#" },
-                { icon: Facebook, href: "#" },
-                { icon: Twitter, href: "#" },
+                {
+                  icon: Instagram,
+                  href: "https://instagram.com/noorpanjabighar",
+                  label: "Instagram",
+                },
+                {
+                  icon: Facebook,
+                  href: "https://facebook.com/noorpanjabighar",
+                  label: "Facebook",
+                },
+                {
+                  icon: Twitter,
+                  href: "https://twitter.com/noorpanjabighar",
+                  label: "Twitter",
+                },
               ].map((social, i) => (
                 <a
                   key={i}
                   href={social.href}
-                  className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-amber-500 hover:text-emerald-950 transition-all duration-500"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="w-12 h-12 rounded-full border-2 border-white/30 flex items-center justify-center hover:bg-amber-500 hover:text-emerald-950 hover:border-amber-500 hover:scale-110 transition-all duration-500 group"
                 >
-                  <social.icon className="w-5 h-5" />
+                  <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 </a>
               ))}
             </div>
@@ -133,11 +148,7 @@ const Footer = ({ onNavigate }: { onNavigate?: (p: PageType) => void }) => {
             © 2025 NOOR PANJABI GHAR. CRAFTED BY HAND IN DHAKA.
           </p>
 
-          <div className="flex gap-4 opacity-20 hover:opacity-100 transition-opacity">
-            <div className="h-6 w-10 bg-white/20 rounded-sm" />
-            <div className="h-6 w-10 bg-white/20 rounded-sm" />
-            <div className="h-6 w-10 bg-white/20 rounded-sm" />
-          </div>
+         
         </div>
       </div>
     </footer>
