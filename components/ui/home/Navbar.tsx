@@ -74,11 +74,13 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, onSearchClick }) => {
               } hover:text-amber-400`}
               onClick={onSearchClick}
             />
-            <User
-              className={`w-5 h-5 cursor-pointer ${
-                isScrolled ? "text-emerald-950/60" : "text-white/60"
-              } hover:text-amber-400 hidden sm:block`}
-            />
+            <Link href={'/login'}>
+              <User
+                className={`w-5 h-5 cursor-pointer ${
+                  isScrolled ? "text-emerald-950/60" : "text-white/60"
+                } hover:text-amber-400 hidden sm:block`}
+              />
+            </Link>
             <div className="relative cursor-pointer group">
               <ShoppingBag
                 className={`w-5 h-5 ${
