@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Providers } from "../providers";
 
 export const metadata: Metadata = {
   title: "Noor Panjabi Ghar",
@@ -12,5 +13,9 @@ export const metadata: Metadata = {
 export default function FrontLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  return <div>{children}</div>;
+  return (
+    <Providers>
+      <div>{children}</div>
+    </Providers>
+  );
 }

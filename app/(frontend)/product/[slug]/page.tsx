@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Heart, Star, Minus, Plus } from "lucide-react";
 import { SectionTitle } from "../../../../components/common/section-title";
@@ -10,9 +10,9 @@ import SearchOverlay from "../../../../components/ui/home/SearchOverlay";
 import { useLoadingAlert } from "@/hooks/useLoadingAlert";
 
 interface ProductDetailPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // Mock product data - in real app, fetch from API based on slug
@@ -53,7 +53,8 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
   const { loading, alert, showAlert } = useLoadingAlert();
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
-  const product = getProductBySlug(params.slug);
+  const resolvedParams = use(params);
+  const product = getProductBySlug(resolvedParams.slug);
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
