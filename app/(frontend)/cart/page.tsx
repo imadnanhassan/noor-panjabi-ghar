@@ -49,14 +49,10 @@ export default function CartPage() {
     (sum, item) => sum + item.price * item.quantity,
     0
   );
-  const shipping = items.reduce(
-    (sum, item) => sum + (item.shipping || 0) * item.quantity,
-    0
-  );
-  const finalTotal = subtotal + shipping;
+  const finalTotal = subtotal;
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#1A2E2A] font-sans selection:bg-emerald-100 selection:text-emerald-900 overflow-x-hidden">
+    <div className="min-h-screen bg-[#f8f5f0] text-[#111827] font-sans selection:bg-[#e2d7c5] selection:text-[#0f3d3e] overflow-x-hidden">
       <AnimatePresence>
         {isSearchOpen && (
           <SearchOverlay onClose={() => setIsSearchOpen(false)} />
@@ -74,23 +70,23 @@ export default function CartPage() {
           {alertComponent}
 
           {/* Hero Section */}
-          <section className="relative h-[400px] bg-emerald-950 overflow-hidden">
+          <section className="relative h-[250px] md:h-[400px] bg-[#0f3d3e] overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=2070"
               alt="Shopping Cart Background"
               className="w-full h-full object-cover brightness-[0.45]"
             />
-            <div className="absolute inset-0 flex items-center justify-center text-center px-10 mt-32 mb-10">
+            <div className="absolute inset-0 flex items-center justify-center text-center px-6 md:px-10 mt-16 md:mt-32 mb-6 md:mb-10">
               <div className="max-w-6xl">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <h1 className="text-4xl md:text-7xl font-serif font-bold text-white leading-none tracking-tighter">
+                  <h1 className="text-3xl md:text-7xl font-serif font-bold text-white leading-none tracking-tighter">
                     Your Shopping Cart
                   </h1>
-                  <p className="text-white/60 text-lg md:text-xl font-light max-w-2xl mx-auto mt-6 italic">
+                  <p className="text-white/60 text-base md:text-xl font-light max-w-2xl mx-auto mt-4 md:mt-6 italic">
                     Review your selections and proceed to checkout when you're
                     ready
                   </p>
@@ -106,10 +102,10 @@ export default function CartPage() {
                 animate={{ opacity: 1 }}
                 className="text-center py-32"
               >
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-linear-to-br from-emerald-100 to-amber-100 rounded-full mb-6 shadow-2xl">
-                  <div className="w-10 h-10 border-4 border-emerald-600 border-t-transparent rounded-full animate-spin"></div>
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-[#e2d7c5] rounded-full mb-6">
+                  <div className="w-10 h-10 border-4 border-[#0f3d3e] border-t-transparent rounded-full animate-spin"></div>
                 </div>
-                <p className="text-emerald-800 text-xl font-medium">
+                <p className="text-[#6b7280] text-xl font-medium">
                   Loading your luxury selections...
                 </p>
               </motion.div>
@@ -120,26 +116,26 @@ export default function CartPage() {
                 transition={{ duration: 0.8 }}
                 className="text-center py-32"
               >
-                <div className="inline-flex items-center justify-center w-32 h-32 bg-linear-to-br from-emerald-50 via-amber-50 to-emerald-100 rounded-full mb-10 shadow-2xl border-4 border-white">
-                  <ShoppingBag className="w-16 h-16 text-emerald-600" />
+                <div className="inline-flex items-center justify-center w-32 h-32 bg-[#e2d7c5] rounded-full mb-10 border-4 border-white">
+                  <ShoppingBag className="w-16 h-16 text-[#0f3d3e]" />
                 </div>
-                <h2 className="text-4xl md:text-5xl font-serif font-bold text-emerald-950 mb-6 leading-tight">
+                <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#111827] mb-6 leading-tight">
                   Your Cart Awaits
                 </h2>
-                <p className="text-emerald-700 text-xl mb-10 max-w-lg mx-auto leading-relaxed">
+                <p className="text-[#6b7280] text-xl mb-10 max-w-lg mx-auto leading-relaxed">
                   Discover our exquisite collection of premium garments, crafted
                   with unparalleled elegance and sophistication
                 </p>
                 <Link href="/products">
-                  <Button className="bg-linear-to-r from-emerald-600 to-amber-600 hover:from-emerald-700 hover:to-amber-700 text-white px-10 py-4 text-xl font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 rounded-full">
+                  <Button className="bg-[#0f3d3e] hover:bg-[#c9a36a] text-white px-10 py-4 text-xl font-semibold transition-all duration-300 rounded-full">
                     Explore Collection
                   </Button>
                 </Link>
               </motion.div>
             ) : (
-              <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 pt-16">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 pt-8 md:pt-16">
                 {/* Cart Items */}
-                <div className="xl:col-span-8">
+                <div className="lg:col-span-8">
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -148,10 +144,10 @@ export default function CartPage() {
                   >
                     <div className="flex items-center justify-between mb-12">
                       <div>
-                        <h2 className="text-3xl font-serif font-bold text-emerald-950 mb-2">
+                        <h2 className="text-3xl font-serif font-bold text-[#111827] mb-2">
                           Luxury Selections
                         </h2>
-                        <p className="text-emerald-600 text-lg">
+                        <p className="text-[#0f3d3e] text-lg">
                           {items.length} exquisite{" "}
                           {items.length === 1 ? "piece" : "pieces"} in your
                           collection
@@ -159,7 +155,7 @@ export default function CartPage() {
                       </div>
                       <Button
                         variant="ghost"
-                        className="text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 px-6 py-3 text-lg font-medium rounded-full border border-emerald-200"
+                        className="text-[#0f3d3e] hover:text-[#c9a36a] hover:bg-[#e2d7c5] px-6 py-3 text-lg font-medium rounded-full border border-[#e5e7eb]"
                       >
                         Clear Collection
                       </Button>
@@ -171,12 +167,12 @@ export default function CartPage() {
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: index * 0.15 }}
-                        className="group bg-linear-to-br from-white via-emerald-50/30 to-amber-50/20 rounded-3xl shadow-lg border border-emerald-100/50 hover:shadow-2xl hover:border-emerald-200 transition-all duration-500 overflow-hidden backdrop-blur-sm"
+                        className="group bg-white rounded-3xl border border-[#e5e7eb] hover:border-[#c9a36a] transition-all duration-500 overflow-hidden backdrop-blur-sm"
                       >
-                        <div className="p-8">
-                          <div className="flex items-center space-x-8">
+                        <div className="p-4 md:p-8">
+                          <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 lg:space-x-8">
                             {/* Product Image */}
-                            <div className="relative w-32 h-32 rounded-2xl overflow-hidden bg-linear-to-br from-emerald-100 via-amber-50 to-emerald-50 flex-shrink-0 shadow-xl border-4 border-white">
+                            <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-2xl overflow-hidden bg-[#e2d7c5] flex-shrink-0 border-4 border-white">
                               <Image
                                 src={item.image}
                                 alt={item.name}
@@ -187,34 +183,34 @@ export default function CartPage() {
                             </div>
 
                             {/* Product Details */}
-                            <div className="flex-1 min-w-0">
-                              <h3 className="text-2xl font-serif font-bold text-emerald-950 mb-3 group-hover:text-amber-600 transition-colors duration-300 leading-tight">
+                            <div className="flex-1 min-w-0 text-center md:text-left">
+                              <h3 className="text-xl md:text-2xl font-serif font-bold text-[#111827] mb-2 md:mb-3 group-hover:text-[#c9a36a] transition-colors duration-300 leading-tight">
                                 {item.name}
                               </h3>
-                              <div className="flex items-center space-x-3 text-sm text-emerald-700 mb-4">
+                              <div className="flex flex-wrap justify-center md:justify-start items-center space-x-2 md:space-x-3 text-sm text-[#6b7280] mb-3 md:mb-4">
                                 {item.size && (
-                                  <span className="bg-linear-to-r from-emerald-100 to-emerald-200 px-4 py-2 rounded-full font-medium shadow-sm">
+                                  <span className="bg-[#e2d7c5] px-3 py-1 md:px-4 md:py-2 rounded-full font-medium">
                                     Size: {item.size}
                                   </span>
                                 )}
                                 {item.color && (
-                                  <span className="bg-linear-to-r from-amber-100 to-amber-200 px-4 py-2 rounded-full font-medium shadow-sm">
+                                  <span className="bg-[#c9a36a] text-[#111827] px-3 py-1 md:px-4 md:py-2 rounded-full font-medium">
                                     Color: {item.color}
                                   </span>
                                 )}
                               </div>
-                              <div className="flex items-baseline space-x-2">
-                                <p className="text-3xl font-bold text-emerald-600">
+                              <div className="flex items-baseline justify-center md:justify-start space-x-2">
+                                <p className="text-2xl md:text-3xl font-bold text-[#0f3d3e]">
                                   ${item.price.toFixed(2)}
                                 </p>
-                                <span className="text-emerald-500 text-lg">
+                                <span className="text-[#6b7280] text-base md:text-lg">
                                   per piece
                                 </span>
                               </div>
                             </div>
 
                             {/* Quantity Controls */}
-                            <div className="flex items-center bg-white rounded-2xl shadow-lg border-2 border-emerald-100 overflow-hidden">
+                            <div className="flex items-center bg-[#e2d7c5] rounded-2xl border border-[#e5e7eb] overflow-hidden">
                               <button
                                 onClick={() =>
                                   handleQuantityChange(
@@ -223,11 +219,11 @@ export default function CartPage() {
                                   )
                                 }
                                 disabled={item.quantity <= 1}
-                                className="w-14 h-14 flex items-center justify-center bg-gradient-to-r from-red-50 to-red-100 hover:from-red-100 hover:to-red-200 text-red-600 hover:text-red-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed border-r border-emerald-100"
+                                className="w-12 h-12 flex items-center justify-center bg-[#0f3d3e] hover:bg-[#c9a36a] text-white transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed rounded-l-2xl"
                               >
-                                <Minus className="w-6 h-6" />
+                                <Minus className="w-5 h-5" />
                               </button>
-                              <div className="px-6 py-3 bg-gradient-to-r from-emerald-50 to-amber-50">
+                              <div className="px-4 py-2">
                                 <input
                                   type="number"
                                   min="1"
@@ -240,7 +236,7 @@ export default function CartPage() {
                                       Math.max(1, Math.min(99, value))
                                     );
                                   }}
-                                  className="w-16 text-center font-bold text-emerald-950 text-xl bg-transparent border-none outline-none focus:ring-0"
+                                  className="w-16 text-center font-bold text-[#111827] text-lg bg-transparent border-none outline-none focus:ring-0"
                                 />
                               </div>
                               <button
@@ -250,23 +246,23 @@ export default function CartPage() {
                                     item.quantity + 1
                                   )
                                 }
-                                className="w-14 h-14 flex items-center justify-center bg-gradient-to-r from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 text-green-600 hover:text-green-700 transition-all duration-200 border-l border-emerald-100"
+                                className="w-12 h-12 flex items-center justify-center bg-[#0f3d3e] hover:bg-[#c9a36a] text-white transition-all duration-200 rounded-r-2xl"
                               >
-                                <Plus className="w-6 h-6" />
+                                <Plus className="w-5 h-5" />
                               </button>
                             </div>
 
                             {/* Item Total & Remove */}
-                            <div className="text-right flex-shrink-0">
-                              <p className="text-3xl font-bold text-emerald-950 mb-4">
+                            <div className="text-center md:text-right flex-shrink-0">
+                              <p className="text-2xl md:text-3xl font-bold text-[#111827] mb-3 md:mb-4">
                                 ${(item.price * item.quantity).toFixed(2)}
                               </p>
                               <Button
                                 variant="ghost"
                                 onClick={() => handleRemoveItem(item.id)}
-                                className="text-red-500 hover:text-red-700 hover:bg-red-50 p-3 rounded-full transition-all duration-200 shadow-sm"
+                                className="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 md:p-3 rounded-full transition-all duration-200"
                               >
-                                <Trash2 className="w-5 h-5" />
+                                <Trash2 className="w-4 h-4 md:w-5 md:h-5" />
                               </Button>
                             </div>
                           </div>
@@ -277,55 +273,47 @@ export default function CartPage() {
                 </div>
 
                 {/* Order Summary */}
-                <div className="xl:col-span-4">
+                <div className="lg:col-span-4">
                   <motion.div
                     initial={{ opacity: 0, x: 30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.3 }}
                     className="sticky top-24"
                   >
-                    <div className="bg-linear-to-br from-white via-emerald-50/50 to-amber-50/30 rounded-3xl shadow-2xl border border-emerald-100/60 p-10 backdrop-blur-sm">
-                      <div className="text-center mb-8">
-                        <h2 className="text-3xl font-serif font-bold text-emerald-950 mb-2">
+                    <div className="bg-white rounded-3xl border border-[#e5e7eb] p-6 md:p-10 backdrop-blur-sm">
+                      <div className="text-center mb-6 md:mb-8">
+                        <h2 className="text-2xl md:text-3xl font-serif font-bold text-[#111827] mb-2">
                           Order Summary
                         </h2>
-                        <div className="w-16 h-1 bg-linear-to-r from-emerald-400 to-amber-400 rounded-full mx-auto"></div>
+                        <div className="w-12 h-1 md:w-16 bg-[#0f3d3e] rounded-full mx-auto"></div>
                       </div>
 
-                      <div className="space-y-6 mb-8">
-                        <div className="flex justify-between items-center py-3 border-b border-emerald-100">
-                          <span className="text-emerald-700 font-medium text-lg">
+                      <div className="space-y-4 md:space-y-6 mb-6 md:mb-8">
+                        <div className="flex justify-between items-center py-2 md:py-3 ">
+                          <span className="text-[#6b7280] font-medium text-base md:text-lg">
                             Subtotal
                           </span>
-                          <span className="font-bold text-emerald-950 text-xl">
+                          <span className="font-bold text-[#111827] text-lg md:text-xl">
                             ${subtotal.toFixed(2)}
                           </span>
                         </div>
-                        <div className="flex justify-between items-center py-3 border-b border-emerald-100">
-                          <span className="text-emerald-700 font-medium text-lg">
-                            Premium Shipping
-                          </span>
-                          <span className="font-bold text-emerald-950 text-xl">
-                            ${shipping.toFixed(2)}
-                          </span>
-                        </div>
-                        <div className="border-t-2 border-emerald-200 pt-6">
+                        <div className="border-t-2 border-[#e5e7eb] pt-4 md:pt-6">
                           <div className="flex justify-between items-center">
-                            <span className="text-2xl font-bold text-emerald-950">
+                            <span className="text-xl md:text-2xl font-bold text-[#111827]">
                               Grand Total
                             </span>
-                            <span className="text-3xl font-bold text-emerald-600">
+                            <span className="text-2xl md:text-3xl font-bold text-[#0f3d3e]">
                               ${finalTotal.toFixed(2)}
                             </span>
                           </div>
                         </div>
                       </div>
 
-                      <div className="space-y-4">
+                      <div className="space-y-3 md:space-y-4 flex flex-col gap-2.5">
                         <Link href="/checkout">
                           <Button
                             fullWidth
-                            className="bg-linear-to-r from-emerald-600 via-emerald-500 to-amber-500 hover:from-emerald-700 hover:via-emerald-600 hover:to-amber-600 text-white py-5 text-xl font-bold shadow-2xl hover:shadow-3xl transition-all duration-300 rounded-2xl"
+                            className="bg-[#0f3d3e] hover:bg-[#c9a36a] text-white py-4 md:py-5 text-lg md:text-xl font-bold transition-all duration-300 rounded-2xl"
                           >
                             Complete Purchase
                           </Button>
@@ -334,7 +322,7 @@ export default function CartPage() {
                           <Button
                             variant="outline"
                             fullWidth
-                            className="border-2 border-emerald-300 text-emerald-700 hover:bg-emerald-50 py-5 text-xl font-semibold rounded-2xl hover:border-emerald-400 transition-all duration-300"
+                            className="border-2 border-[#e5e7eb] text-[#0f3d3e] hover:bg-[#e2d7c5] py-4 md:py-5 text-lg md:text-xl font-semibold rounded-2xl hover:border-[#c9a36a] transition-all duration-300"
                           >
                             Continue Shopping
                           </Button>
@@ -342,22 +330,22 @@ export default function CartPage() {
                       </div>
 
                       {/* Luxury Trust Badges */}
-                      <div className="mt-10 pt-8 border-t-2 border-emerald-200">
-                        <div className="grid grid-cols-2 gap-4 text-center">
-                          <div className="flex flex-col items-center space-y-2">
-                            <div className="w-12 h-12 bg-linear-to-br from-emerald-100 to-emerald-200 rounded-full flex items-center justify-center shadow-lg">
-                              <span className="text-2xl">🔒</span>
+                      <div className="mt-8 md:mt-10 pt-6 md:pt-8 border-t-2 border-[#e5e7eb]">
+                        <div className="grid grid-cols-2 gap-3 md:gap-4 text-center">
+                          <div className="flex flex-col items-center space-y-1 md:space-y-2">
+                            <div className="w-10 h-10 md:w-12 md:h-12 bg-[#e2d7c5] rounded-full flex items-center justify-center">
+                              <span className="text-lg md:text-2xl">🔒</span>
                             </div>
-                            <span className="text-sm font-semibold text-emerald-700">
+                            <span className="text-xs md:text-sm font-semibold text-[#6b7280]">
                               Secure Checkout
                             </span>
                           </div>
-                          <div className="flex flex-col items-center space-y-2">
-                            <div className="w-12 h-12 bg-linear-to-br from-amber-100 to-amber-200 rounded-full flex items-center justify-center shadow-lg">
-                              <span className="text-2xl">🚚</span>
+                          <div className="flex flex-col items-center space-y-1 md:space-y-2">
+                            <div className="w-10 h-10 md:w-12 md:h-12 bg-[#c9a36a] rounded-full flex items-center justify-center">
+                              <span className="text-lg md:text-2xl">🚚</span>
                             </div>
-                            <span className="text-sm font-semibold text-emerald-700">
-                              Premium Shipping
+                            <span className="text-xs md:text-sm font-semibold text-[#6b7280]">
+                              Fast Delivery
                             </span>
                           </div>
                         </div>

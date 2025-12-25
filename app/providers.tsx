@@ -18,7 +18,14 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+      <PersistGate
+        loading={
+          <div className="flex items-center justify-center min-h-screen">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0f3d3e]"></div>
+          </div>
+        }
+        persistor={persistor}
+      >
         {children}
       </PersistGate>
     </Provider>
