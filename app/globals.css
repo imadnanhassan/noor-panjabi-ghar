@@ -36,3 +36,37 @@ body {
   font-family: var(--font-bengali), var(--font-sans), system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
+
+/* Custom scrollbar for admin sidebar */
+.admin-sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.admin-sidebar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(245, 158, 11, 0.6),
+    rgba(217, 119, 6, 0.8)
+  );
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(245, 158, 11, 0.8),
+    rgba(217, 119, 6, 1)
+  );
+  transform: scale(1.1);
+}
+
+.admin-sidebar::-webkit-scrollbar-corner {
+  background: transparent;
+}

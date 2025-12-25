@@ -4,9 +4,25 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, ArrowRight, FacebookIcon, Facebook } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useAppDispatch, useAppSelector } from "@/app/provider/hook";
+import { loginUser } from "@/app/provider/features/user-slice";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useAppDispatch();
+  const { loading, error } = useAppSelector((state) => state.auth);
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const result = await dispatch(loginUser({ email, password }));
+    if (loginUser.fulfilled.match(result)) {
+      router.push("/");
+    }
+  };
 
   return (
     <div className="h-screen flex flex-col lg:flex-row bg-white">
@@ -107,15 +123,18 @@ export default function LoginPage() {
             <span className="h-px flex-1 bg-emerald-950/10" />
           </div>
 
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <label className="text-[9px] font-black uppercase tracking-[0.4em] text-emerald-900/40 ml-4">
                 Maison Identity (Email)
               </label>
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-8 py-4 bg-white rounded-full border border-emerald-950/5 focus:border-amber-500 outline-none transition-all font-medium text-emerald-950 shadow-sm"
                 placeholder="Ledger address..."
+                required
               />
             </div>
 
@@ -125,8 +144,11 @@ export default function LoginPage() {
               </label>
               <input
                 type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-8 py-4 bg-white rounded-full border border-emerald-950/5 focus:border-amber-500 outline-none transition-all font-medium text-emerald-950 shadow-sm"
                 placeholder="••••••••"
+                required
               />
               <button
                 type="button"
@@ -141,6 +163,8 @@ export default function LoginPage() {
               </button>
             </div>
 
+            {error && <p className="text-red-500 text-sm">{error}</p>}
+
             <div className="flex justify-end">
               <button
                 type="button"
@@ -151,10 +175,11 @@ export default function LoginPage() {
             </div>
 
             <button
-              type="button"
-              className="w-full bg-emerald-950 text-white py-6 rounded-full font-black uppercase tracking-[0.5em] text-[11px] shadow-2xl hover:bg-amber-600 transition-all active:scale-95"
+              type="submit"
+              disabled={loading}
+              className="w-full bg-emerald-950 text-white py-6 rounded-full font-black uppercase tracking-[0.5em] text-[11px] shadow-2xl hover:bg-amber-600 transition-all active:scale-95 disabled:opacity-50"
             >
-              Access the Maison
+              {loading ? "Accessing..." : "Access the Maison"}
             </button>
           </form>
 

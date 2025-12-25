@@ -1,5 +1,6 @@
 import "./globals.css";
 import { DM_Sans, Geist_Mono, Noto_Sans_Bengali } from "next/font/google";
+import { Providers } from "./providers";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -24,7 +25,7 @@ export default function RootLayout({
       <body
         className={`${dmSans.variable} ${geistMono.variable} ${notoBengali.variable} antialiased`}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
