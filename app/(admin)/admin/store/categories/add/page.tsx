@@ -1,8 +1,16 @@
+"use client";
+
 export default function AddCategoryPage() {
   return (
-    <div>
-      <h1>Add Category</h1>
-      <p>Add a new category here.</p>
+    <div className="min-h-screen bg-[var(--admin-bg)] text-[var(--admin-text)]">
+      <div className="max-w-[1600px] mx-auto p-4 md:p-8">
+        <h1 className="text-2xl font-bold mb-6">Add New Category</h1>
+        <div className="bg-[var(--admin-card-bg)] border-[var(--admin-border)] rounded-[2rem] p-8">
+          <p className="text-[var(--admin-text-muted)]">
+            Category management form will be implemented here.
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

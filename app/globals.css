@@ -12,6 +12,40 @@
 
   /* চাইলে border/shadow এর জন্য */
   --border-soft: #e5e7eb;
+
+  /* Admin Dashboard Colors */
+  --admin-bg: #050505;
+  --admin-card-bg: #0d0d0d;
+  --admin-gold: #d4af37;
+  --admin-text: #cbd5e1; /* slate-300 */
+  --admin-text-muted: #64748b; /* slate-500 */
+  --admin-border: rgba(255, 255, 255, 0.05);
+  --admin-border-light: rgba(255, 255, 255, 0.1);
+  --admin-border-hover: rgba(212, 175, 55, 0.2);
+  --admin-bg-light: rgba(255, 255, 255, 0.05);
+  --admin-bg-hover: rgba(255, 255, 255, 0.01);
+  --admin-bg-gradient-start: #1a1a1a;
+  --admin-bg-gradient-end: #000000;
+  --admin-gold-opacity-10: rgba(212, 175, 55, 0.1);
+  --admin-gold-opacity-20: rgba(212, 175, 55, 0.2);
+  --admin-gold-opacity-30: rgba(212, 175, 55, 0.3);
+
+  /* Admin Dashboard Colors - Light Theme */
+  --admin-bg-light-theme: #f8f5f0;
+  --admin-card-bg-light-theme: #ffffff;
+  --admin-gold-light-theme: #c9a36a;
+  --admin-text-light-theme: #374151; /* gray-700 */
+  --admin-text-muted-light-theme: #6b7280; /* gray-500 */
+  --admin-border-light-theme: rgba(0, 0, 0, 0.05);
+  --admin-border-light-light-theme: rgba(0, 0, 0, 0.1);
+  --admin-border-hover-light-theme: rgba(201, 163, 106, 0.2);
+  --admin-bg-light-light-theme: rgba(0, 0, 0, 0.05);
+  --admin-bg-hover-light-theme: rgba(0, 0, 0, 0.01);
+  --admin-bg-gradient-start-light-theme: #f0f0f0;
+  --admin-bg-gradient-end-light-theme: #ffffff;
+  --admin-gold-opacity-10-light-theme: rgba(201, 163, 106, 0.1);
+  --admin-gold-opacity-20-light-theme: rgba(201, 163, 106, 0.2);
+  --admin-gold-opacity-30-light-theme: rgba(201, 163, 106, 0.3);
 }
 
 /* Tailwind theme variables bind */

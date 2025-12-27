@@ -40,7 +40,7 @@ export default function DashboardLayout({
         </div>
 
         {/* Main Content Area */}
-        <main className="flex-1 overflow-auto p-6">{children}</main>
+        <main className="flex-1 overflow-auto ">{children}</main>
 
         {/* Page Footer */}
         <AdminPageFooter />

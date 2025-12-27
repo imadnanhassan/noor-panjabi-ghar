@@ -6,7 +6,6 @@ import { ChevronDown, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "@/app/provider/hook";
 import { toggleSidebar } from "@/app/provider/features/theme-slice";
-import AdminHeader from "./AdminHeader";
 import AdminFooter from "./AdminFooter";
 
 import { SubMenuItem, MenuItemWithHref } from "./sidebar-types";
@@ -65,16 +64,26 @@ export default function Sidebar() {
 
       {/* Sidebar */}
       <div
-        className={`bg-white dark:bg-black h-screen flex flex-col shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] fixed lg:static top-0 left-0 z-50 transition-all duration-300 ${
+        className={`bg-(--admin-card-bg) border-r-(--admin-border) h-screen flex flex-col shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] fixed lg:static top-0 left-0 z-50 transition-all duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         } w-[260px]`}
       >
-        {/* Header */}
-        <AdminHeader
-          isCollapsed={isCollapsed}
-          setIsCollapsed={setIsCollapsed}
-        />
-
+        {/* Sidebar Header */}
+        <div className="p-6 border-b-(--admin-border)">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-(--admin-gold) rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-sm">LD</span>
+            </div>
+            <div>
+              <h2 className="text-white font-serif text-lg">
+                Luxe<span className="text-(--admin-gold)">Dynamics</span>
+              </h2>
+              <p className="text-(--admin-text-muted) text-[10px] uppercase tracking-wider">
+                Admin Panel
+              </p>
+            </div>
+          </div>
+        </div>
         {/* Navigation */}
         <nav className="flex-1 overflow-y-auto admin-sidebar">
           <div className="p-4">
@@ -85,10 +94,10 @@ export default function Sidebar() {
                   <div key={item.name || index} className="mb-6">
                     <Link
                       href={item.href}
-                      className={`flex items-center gap-3 p-2.5 text-sm font-semibold transition-colors ${
+                      className={`flex items-center gap-3 p-2.5 text-sm font-semibold transition-colors rounded-xl ${
                         isActive
-                          ? "bg-black/10 dark:bg-gray-800 text-black dark:text-white border-r-2 border-amber-500"
-                          : "text-black/70 dark:text-white/70 hover:bg-black/5 dark:hover:bg-gray-800"
+                          ? "bg-(--admin-bg-light) text-white border-r-2 border-(--admin-gold)"
+                          : "text-(--admin-text-muted) hover:bg-(--admin-bg-hover) hover:text-white"
                       }`}
                     >
                       <item.icon className="w-5 h-5 shrink-0" />
@@ -109,10 +118,10 @@ export default function Sidebar() {
                 <div key={item.section} className="mb-6">
                   <button
                     onClick={() => toggleExpanded(item.section!)}
-                    className={`w-full flex items-center justify-between py-3 px-7 mb-2 transition-colors ${
+                    className={`w-full flex items-center justify-between py-3 px-7 mb-2 transition-colors rounded-lg ${
                       hasActiveItem
-                        ? "text-black dark:text-white"
-                        : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
+                        ? "text-white"
+                        : "text-(--admin-text-muted) hover:text-white hover:bg-(--admin-bg-hover)"
                     }`}
                   >
                     <div className="flex items-center gap-3">
@@ -149,10 +158,10 @@ export default function Sidebar() {
                           <li key={subItem.name} className="mb-2">
                             <button
                               onClick={() => toggleExpanded(subItem.name)}
-                              className={`w-full flex items-center gap-3 p-2.5 pl-12 text-sm font-semibold transition-colors ${
+                              className={`w-full flex items-center gap-3 p-2.5 pl-12 text-sm font-semibold transition-colors rounded-lg ${
                                 hasActiveSubItem
-                                  ? "text-black dark:text-white"
-                                  : "text-black/70 dark:text-white/70 hover:bg-black/5 dark:hover:bg-gray-800"
+                                  ? "text-white"
+                                  : "text-(--admin-text-muted) hover:bg-(--admin-bg-hover) hover:text-white"
                               }`}
                             >
                               <subItem.icon className="w-4 h-4 shrink-0" />
@@ -179,10 +188,10 @@ export default function Sidebar() {
                                     <li key={nestedItem.name}>
                                       <Link
                                         href={nestedItem.href}
-                                        className={`flex items-center gap-3 p-2 pl-8 text-sm transition-colors ${
+                                        className={`flex items-center gap-3 p-2 pl-8 text-sm transition-colors rounded-lg ${
                                           isNestedActive
-                                            ? "bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 border-r-2 border-amber-500"
-                                            : "text-black/60 dark:text-white/60 hover:bg-black/5 dark:hover:bg-gray-800"
+                                            ? "bg-(--admin-gold-opacity-10) text-(--admin-gold) border-r-2 border-(--admin-gold)"
+                                            : "text-(--admin-text-muted) hover:bg-(--admin-bg-hover) hover:text-white"
                                         }`}
                                       >
                                         <nestedItem.icon className="w-3 h-3 shrink-0" />
@@ -203,10 +212,10 @@ export default function Sidebar() {
                         <li key={subItem.name}>
                           <Link
                             href={subItem.href}
-                            className={`flex items-center gap-3 p-2.5 pl-12 text-sm font-semibold transition-colors ${
+                            className={`flex items-center gap-3 p-2.5 pl-12 text-sm font-semibold transition-colors rounded-lg ${
                               isActive
-                                ? "bg-black/10 dark:bg-gray-800 text-black dark:text-white border-r-2 border-amber-500"
-                                : "text-black/70 dark:text-white/70 hover:bg-black/5 dark:hover:bg-gray-800"
+                                ? "bg-(--admin-bg-light) text-white border-r-2 border-(--admin-gold)"
+                                : "text-(--admin-text-muted) hover:bg-(--admin-bg-hover) hover:text-white"
                             }`}
                           >
                             <subItem.icon className="w-4 h-4 shrink-0" />
@@ -221,7 +230,6 @@ export default function Sidebar() {
             })}
           </div>
         </nav>
-
         {/* Footer */}
         <AdminFooter />
       </div>

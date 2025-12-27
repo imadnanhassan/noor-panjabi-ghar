@@ -15,6 +15,7 @@
     "next": "16.1.1",
     "perfect-scrollbar": "^1.5.6",
     "react": "19.2.3",
+    "react-apexcharts": "^1.9.0",
     "react-dom": "19.2.3",
     "react-hook-form": "^7.69.0",
     "react-redux": "^9.2.0",
@@ -27,6 +28,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "apexcharts": "^5.3.6",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

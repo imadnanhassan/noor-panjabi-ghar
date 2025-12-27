@@ -25,90 +25,38 @@ export default function AdminPageHeader() {
   }, []);
 
   return (
-    <header className="bg-white dark:bg-black border-b border-gray-200 dark:border-gray-700 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Left side - Breadcrumb/Title */}
-          <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-black dark:text-white">
-              Admin Dashboard
-            </h1>
-          </div>
+    <header className="h-20 px-4 md:px-8 flex items-center justify-between border-b-[var(--admin-border)] sticky top-0 z-50 bg-[var(--admin-bg)]/80 backdrop-blur-xl animate-in fade-in slide-in-from-top-4 duration-700">
+      <div className="flex flex-col animate-in fade-in slide-in-from-left-4 duration-700 delay-200">
+        <h1 className="text-xl font-serif text-white">
+          Luxe<span className="text-[var(--admin-gold)]">Dynamics</span>
+        </h1>
+        <p className="text-[9px] uppercase tracking-[0.3em] text-[var(--admin-text-muted)] font-medium">
+          Sat, 27 Dec 2025 | Admin Panel
+        </p>
+      </div>
 
-          {/* Right side - Actions */}
-          <div className="flex items-center space-x-4">
-            {/* Search */}
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 text-gray-400" />
-              </div>
-              <input
-                type="text"
-                placeholder="Search..."
-                className="block w-full pl-10 pr-3 py-2 border border-gray-200 dark:border-gray-700 rounded-md leading-5 bg-white dark:bg-black placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-amber-500 focus:border-amber-500 text-sm text-black dark:text-white"
-              />
-            </div>
-
-            {/* Theme Toggle */}
-            <button
-              onClick={() => dispatch(toggleDarkMode())}
-              className="p-2 text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-gray-800 rounded-lg transition-colors duration-200"
-              title={
-                isDarkMode ? "Switch to light mode" : "Switch to dark mode"
-              }
-            >
-              {isDarkMode ? (
-                <Sun className="h-5 w-5" />
-              ) : (
-                <Moon className="h-5 w-5" />
-              )}
-            </button>
-
-            {/* Notifications */}
-            <button className="p-2 text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-gray-800 rounded-lg transition-colors duration-200 relative">
-              <Bell className="h-5 w-5" />
-              <span className="absolute top-1 right-1 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-gray-900"></span>
-            </button>
-
-            {/* User Menu */}
-            <div className="relative" ref={menuRef}>
-              <button
-                onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                className="flex items-center space-x-2 p-2 text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-gray-800 rounded-lg transition-colors duration-200"
-              >
-                <div className="w-8 h-8 bg-linear-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                  <User className="h-4 w-4 text-white" />
-                </div>
-                <ChevronDown className="h-4 w-4" />
-              </button>
-
-              {isUserMenuOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-black rounded-md shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 z-50">
-                  <div className="py-1">
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-black dark:text-white hover:bg-black/5 dark:hover:bg-gray-800"
-                    >
-                      Your Profile
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-black dark:text-white hover:bg-black/5 dark:hover:bg-gray-800"
-                    >
-                      Settings
-                    </a>
-                    <div className="border-t border-gray-200 dark:border-gray-700"></div>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-black dark:text-white hover:bg-black/5 dark:hover:bg-gray-800"
-                    >
-                      Sign out
-                    </a>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
+      <div className="flex items-center gap-4 md:gap-6">
+        <div className="relative hidden lg:block">
+          <Search
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--admin-text-muted)]"
+            size={14}
+          />
+          <input
+            type="text"
+            placeholder="Search analytics..."
+            className="bg-[var(--admin-bg-light)] border-[var(--admin-border-light)] rounded-full py-1.5 pl-9 pr-4 text-xs focus:outline-none focus:border-[var(--admin-gold)]/50 w-64 transition-all"
+          />
+        </div>
+        <button className="relative p-2 text-[var(--admin-text-muted)] hover:text-white">
+          <Bell size={18} />
+          <span className="absolute top-2 right-2 w-1.5 h-1.5 bg-[var(--admin-gold)] rounded-full"></span>
+        </button>
+        <div className="h-8 w-8 rounded-full border-[var(--admin-gold-opacity-30)] p-0.5">
+          <img
+            src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
+            className="rounded-full bg-[var(--admin-card-bg)]"
+            alt="Avatar"
+          />
         </div>
       </div>
     </header>
