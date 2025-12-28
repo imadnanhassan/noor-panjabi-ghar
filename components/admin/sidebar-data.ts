@@ -169,6 +169,11 @@ export const menuItems: MenuItem[] = [
         icon: ShoppingCart,
       },
       {
+        name: "Add Order",
+        href: "/admin/orders/add",
+        icon: Plus,
+      },
+      {
         name: "Pending Orders",
         href: "/admin/orders/pending",
         icon: Clock,
