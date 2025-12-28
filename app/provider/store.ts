@@ -4,17 +4,19 @@ import storage from "redux-persist/lib/storage";
 import cartReducer from "./features/cart-slice";
 import userReducer from "./features/user-slice";
 import themeReducer from "./features/theme-slice";
+import currencyReducer from "./features/currency-slice";
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["cart", "theme"], // Persist cart and theme settings
+  whitelist: ["cart", "theme", "currency"], // Persist cart, theme, and currency settings
 };
 
 const rootReducer = combineReducers({
   cart: cartReducer,
   auth: userReducer,
   theme: themeReducer,
+  currency: currencyReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

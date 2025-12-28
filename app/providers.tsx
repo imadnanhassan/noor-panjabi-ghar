@@ -3,6 +3,8 @@
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./provider/store";
+import { ThemeProvider } from "./provider/theme-provider";
+import { CurrencyProvider } from "./provider/currency-provider";
 import { useState, useEffect } from "react";
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -26,7 +28,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
         }
         persistor={persistor}
       >
-        {children}
+        <ThemeProvider>
+          <CurrencyProvider>{children}</CurrencyProvider>
+        </ThemeProvider>
       </PersistGate>
     </Provider>
   );
